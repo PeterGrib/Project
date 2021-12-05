@@ -56,8 +56,8 @@ class Agent(object):
         self.losing_streak = 0
         self.winning_streak = 0
 
-        self.discount_lower = .75
-        self.discount_upper = .9
+        self.discount_lower = .9
+        self.discount_upper = 1
 
 
     def _process_last_sale(self, last_sale, profit_each_team):
@@ -88,9 +88,9 @@ class Agent(object):
         price_0_diff = my_last_prices[0]/opponent_last_prices[0]
         price_1_diff = my_last_prices[1]/opponent_last_prices[1]
         #
-        if (price_0_diff < .2) or (price_1_diff < .2):
-            self.discount_upper = .9
-            self.discount_lower = .75
+        if (price_0_diff < .5) or (price_1_diff < .5):
+            self.discount_upper = 1
+            self.discount_lower = .9
             self.winning_streak = 0
             self.losing_streak = 0
 
