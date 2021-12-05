@@ -106,6 +106,7 @@ class Agent(object):
         for j in item0_prices:
             for k in item1_prices:
                 test_array = []
+                print(test_array)
                 for element in cust_data:
                     test_array.append(element)
                 # temporary = copy.deepcopy(self.cust_data)
