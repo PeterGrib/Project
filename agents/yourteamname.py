@@ -213,6 +213,7 @@ class Agent(object):
                             prices[i][1] = k
 
             no_strat_prices = prices[0]
+            print(no_strat_prices)
             return no_strat_prices
 
         x = set_prices(cust_data)
