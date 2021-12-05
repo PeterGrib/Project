@@ -77,8 +77,8 @@ class Agent(object):
         if did_customer_buy_from_me:
             self.winning_streak += 1
             self.losing_streak = 0
-            self.discount_lower += (self.winning_streak)*.1
-            self.discount_upper += (self.winning_streak)*.1
+            self.discount_lower += (self.winning_streak)*.05
+            self.discount_upper += (self.winning_streak)*.05
         else:
             self.winning_streak = 0
             self.losing_streak += 1
@@ -88,7 +88,6 @@ class Agent(object):
         price_0_diff = my_last_prices[0]/opponent_last_prices[0]
         price_1_diff = my_last_prices[1]/opponent_last_prices[1]
         #
-        if (price_0_diff < .5 and my_last_prices[0] > .10) or (price_1_diff < .5 and my_last_prices[1] >.2):
             self.discount_upper = 1
             self.discount_lower = .9
             self.winning_streak = 0
