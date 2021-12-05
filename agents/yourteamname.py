@@ -82,13 +82,13 @@ class Agent(object):
         cust_data = new_buyer_covariates.tolist()
 
 
-        # if type(new_buyer_embedding) != list:
-        #     cust_data.append(self.item0avg)
-        #     cust_data.append(self.item1avg)
-        #
-        # else:
-        cust_data.append(np.dot(new_buyer_embedding, self.item0_embedding))
-        cust_data.append(np.dot(new_buyer_embedding, self.item1_embedding))
+        if type(new_buyer_embedding) != list:
+            cust_data.append(self.item0avg)
+            cust_data.append(self.item1avg)
+
+        else:
+            cust_data.append(np.dot(new_buyer_embedding, self.item0_embedding))
+            cust_data.append(np.dot(new_buyer_embedding, self.item1_embedding))
         print(cust_data)
 
         item0_prices = np.arange(0,2.22, .75)
