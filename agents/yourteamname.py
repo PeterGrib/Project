@@ -66,13 +66,13 @@ class Agent(object):
         if did_customer_buy_from_me:
             self.winning_streak += 1
             self.losing_streak = 0
-            self.discount_lower += (self.winning_streak)*.01
-            self.discount_upper += (self.winning_streak)*.01
+            self.discount_lower += (self.winning_streak)*.1
+            self.discount_upper += (self.winning_streak)*.1
         else:
             self.winning_streak = 0
             self.losing_streak += 1
-            self.discount_lower -= (self.winning_streak)*.01
-            self.discount_upper -= (self.winning_streak)*.01
+            self.discount_lower -= (self.winning_streak)*.1
+            self.discount_upper -= (self.winning_streak)*.1
 
         # print("My current profit: ", my_current_profit)
         # print("Opponent current profit: ", opponent_current_profit)
