@@ -117,12 +117,13 @@ class Agent(object):
                     test_array.insert(0, j)
                     test_array.insert(1, k)
                     print(test_array)
+                    print(input)
                     test_array = np.asarray(test_array)
                     proba = self.trained_model.predict_proba(test_array.reshape(1,-1))
 
                     expect_rev = test_array[0]*proba[0][1]+test_array[1]*proba[0][2]
-                    test_array = test_array.pop(0)
-                    test_array = test_array.pop(0)
+                    test_array = []
+                    # test_array = test_array.pop(0)
                     print(test_array)
                     if expect_rev>max_rev:
                         max_rev = expect_rev
