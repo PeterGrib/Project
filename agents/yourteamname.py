@@ -76,21 +76,22 @@ class Agent(object):
     # Data from last iteration (which item customer purchased, who purchased from, prices for each agent for each item (2x2, where rows are agents and columns are items)))
     # Returns an action: a list of length n_items=2, indicating prices this agent is posting for each item.
     def action(self, obs):
+
         new_buyer_covariates, new_buyer_embedding, last_sale, profit_each_team = obs
         self._process_last_sale(last_sale, profit_each_team)
 
 
-        self.cust_data = new_buyer_covariates.tolist()
+        cust_data = new_buyer_covariates.tolist()
 
 
         if type(new_buyer_embedding) != list:
-            self.cust_data.append(self.item0avg)
-            self.cust_data.append(self.item1avg)
+            cust_data.append(self.item0avg)
+            cust_data.append(self.item1avg)
 
         else:
-            self.cust_data.append(np.dot(new_buyer_embedding, self.item0_embedding))
-            self.cust_data.append(np.dot(new_buyer_embedding, self.item1_embedding))
-        print(self.cust_data)
+            cust_data.append(np.dot(new_buyer_embedding, self.item0_embedding))
+            cust_data.append(np.dot(new_buyer_embedding, self.item1_embedding))
+        print(cust_data)
 
         item0_prices = np.arange(0,2.22, .75)
         item1_prices = np.arange(0,4,.75)
@@ -104,10 +105,13 @@ class Agent(object):
         max_2 = 0
         for j in item0_prices:
             for k in item1_prices:
-                temporary = copy.deepcopy(self.cust_data)
-                test_array = temporary
-                if len(test_array) != 7:
-                    test_array = test_array[2:]
+                test_array = []
+                for element in cust_data:
+                    test_array.append(element)
+                # temporary = copy.deepcopy(self.cust_data)
+                # test_array = temporary
+                # if len(test_array) != 7:
+                #     test_array = test_array[2:]
                 test_array.insert(0, j)
                 test_array.insert(1, k)
                 print(test_array)
