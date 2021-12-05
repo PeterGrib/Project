@@ -133,7 +133,6 @@ class Agent(object):
         else:
             cust_data.append(np.dot(new_buyer_embedding, self.item0_embedding))
             cust_data.append(np.dot(new_buyer_embedding, self.item1_embedding))
-        print(cust_data)
 
 
 
@@ -270,8 +269,8 @@ class Agent(object):
         output.append(max(0, no_strat_prices[1]))
         if self.floorer:
             output = []
-            output.append(.05)
-            output.append(.05)
+            output.append(.15)
+            output.append(.15)
 
         return output
         # TODO Currently this output is just a deterministic 2-d array, but the students are expected to use the buyer covariates to make a better prediction
