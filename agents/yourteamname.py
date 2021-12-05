@@ -94,6 +94,10 @@ class Agent(object):
             self.winning_streak = 0
             self.losing_streak = 0
 
+        if opponent_last_prices[0] < 1 and opponent_last_prices[1] < 1:
+            self.discount_lower = .75
+            self.dicsount_upper = .9
+
         # print("My current profit: ", my_current_profit)
         # print("Opponent current profit: ", opponent_current_profit)
         # print("My last prices: ", my_last_prices)
