@@ -105,6 +105,8 @@ class Agent(object):
             for k in item1_prices:
                 temporary = self.cust_data
                 test_array = temporary
+                if len(test_array) != 7:
+                    del test_array[0:2]
                 test_array.insert(0, j)
                 test_array.insert(1, k)
                 print(test_array)
