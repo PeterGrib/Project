@@ -77,8 +77,8 @@ class Agent(object):
         if did_customer_buy_from_me:
             self.winning_streak += 1
             self.losing_streak = 0
-            self.discount_lower += (self.winning_streak)*.05
-            self.discount_upper += (self.winning_streak)*.05
+            self.discount_lower += (self.winning_streak)*.1
+            self.discount_upper += (self.winning_streak)*.1
         else:
             self.winning_streak = 0
             self.losing_streak += 1
