@@ -119,7 +119,7 @@ class Agent(object):
 
         if type(new_buyer_embedding) != list:
             cust_data.append(np.dot(self.avg_user, self.item0_embedding))
-            cust_data.append(np.dot(seld.avg_user, self.item1_embedding))
+            cust_data.append(np.dot(self.avg_user, self.item1_embedding))
 
         else:
             cust_data.append(np.dot(new_buyer_embedding, self.item0_embedding))
