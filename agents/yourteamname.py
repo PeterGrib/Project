@@ -39,8 +39,19 @@ class Agent(object):
                                 0.3349207822918375,
                                 -0.08573474488666911]
 
-        self.item0avg = -1.2359906243308039
-        self.item1avg = -1.939401864728488
+        # self.item0avg = -1.2359906243308039
+        # self.item1avg = -1.939401864728488
+
+        self.avg_user =   [-0.290928,
+                            -0.022804,
+                            -0.020025,
+                            -0.016612,
+                            -1.484994,
+                            0.018343,
+                            -0.005524,
+                            -0.076671,
+                            0.102322,
+                            0.000550]
 
         self.losing_streak = 0
         self.winning_streak = 0
@@ -74,6 +85,13 @@ class Agent(object):
             self.discount_lower -= (self.losing_streak)*.1
             self.discount_upper -= (self.losing_streak)*.1
 
+        price_0_diff = my_last_prices[0]/opponent_last_prices[0]
+        price_1_diff = my_last_prices[1]/opponent_last_prices[1]
+
+        if price_0_diff < .1 and my_last_prices[0] < .05:
+            self.discount_upper = .9
+            self.discount_lower = .75
+
         # print("My current profit: ", my_current_profit)
         # print("Opponent current profit: ", opponent_current_profit)
         # print("My last prices: ", my_last_prices)
@@ -100,8 +118,8 @@ class Agent(object):
 
 
         if type(new_buyer_embedding) != list:
-            cust_data.append(self.item0avg)
-            cust_data.append(self.item1avg)
+            cust_data.append(np.dot(self.avg_user, self.item0_embedding))
+            cust_data.append(np.dot(seld.avg_user, self.item1_embedding))
 
         else:
             cust_data.append(np.dot(new_buyer_embedding, self.item0_embedding))
