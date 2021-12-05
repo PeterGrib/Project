@@ -80,7 +80,7 @@ class Agent(object):
 
 
         cust_data = new_buyer_covariates.tolist()
-        if new_buyer_embedding == None:
+        if new_buyer_embedding.any() == None:
             cust_data.append(self.item0avg)
             cust_data.append(self.item1avg)
         else:
