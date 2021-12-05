@@ -114,7 +114,7 @@ class Agent(object):
                 # print(test_array)
                 # for element in cust_data:
                 #     test_array.append(element)
-                    test_array = input
+                    test_array = copy.deepcopy(input)
                     test_array.insert(0, j)
                     test_array.insert(1, k)
                     print("tarray", test_array)
