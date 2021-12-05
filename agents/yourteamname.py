@@ -103,7 +103,8 @@ class Agent(object):
         max_2 = 0
         for j in item0_prices:
             for k in item1_prices:
-                test_array = cust_data
+                temporary = cust_data
+                test_array = temporary
                 test_array.insert(0, j)
                 test_array.insert(1, k)
                 print(test_array)
