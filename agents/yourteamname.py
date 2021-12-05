@@ -142,7 +142,7 @@ class Agent(object):
                         test_array = copy.deepcopy(input)
                         test_array.insert(0, j)
                         test_array.insert(1, k)
-                        print(test_array)
+                        # print(test_array)
                         test_array = np.asarray(test_array)
                         proba = self.trained_model.predict_proba(test_array.reshape(1,-1))
                         expect_rev = test_array[0]*proba[0][1]+test_array[1]*proba[0][2]
@@ -159,7 +159,7 @@ class Agent(object):
                         test_array.insert(0, j)
                         test_array.insert(1, k)
                         test_array = np.asarray(test_array)
-                        proba = model.predict_proba(test_array.reshape(1,-1))
+                        proba = self.trained_model.predict_proba(test_array.reshape(1,-1))
                         expect_rev = test_array[0]*proba[0][1]+test_array[1]*proba[0][2]
 
                         if expect_rev > revenues[i]:
