@@ -71,8 +71,8 @@ class Agent(object):
         else:
             self.winning_streak = 0
             self.losing_streak += 1
-            self.discount_lower -= (self.winning_streak)*.1
-            self.discount_upper -= (self.winning_streak)*.1
+            self.discount_lower -= (self.winning_streak)*.01
+            self.discount_upper -= (self.winning_streak)*.01
 
         # print("My current profit: ", my_current_profit)
         # print("Opponent current profit: ", opponent_current_profit)
