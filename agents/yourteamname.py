@@ -109,6 +109,7 @@ class Agent(object):
             max_2 = 0
             for j in item0_prices:
                 for k in item1_prices:
+                    print(k)
                 # test_array = []
                 # print(test_array)
                 # for element in cust_data:
@@ -116,9 +117,10 @@ class Agent(object):
                     test_array = input
                     test_array.insert(0, j)
                     test_array.insert(1, k)
-                    print(test_array)
-                    print(input)
+                    print("tarray", test_array)
+                    print("input",input)
                     test_array = np.asarray(test_array)
+                    print("tarray_np", test_array)
                     proba = self.trained_model.predict_proba(test_array.reshape(1,-1))
 
                     expect_rev = test_array[0]*proba[0][1]+test_array[1]*proba[0][2]
