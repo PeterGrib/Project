@@ -77,22 +77,22 @@ class Agent(object):
         if did_customer_buy_from_me:
             self.winning_streak += 1
             self.losing_streak = 0
-            self.discount_lower += (self.winning_streak)*.05
-            self.discount_upper += (self.winning_streak)*.05
+            self.discount_lower += (self.winning_streak)*.01
+            self.discount_upper += (self.winning_streak)*.01
         else:
             self.winning_streak = 0
             self.losing_streak += 1
-            self.discount_lower -= (self.losing_streak)*.005
-            self.discount_upper -= (self.losing_streak)*.005
+            self.discount_lower -= (self.losing_streak)*.01
+            self.discount_upper -= (self.losing_streak)*.01
 
-        price_0_diff = my_last_prices[0]/opponent_last_prices[0]
-        price_1_diff = my_last_prices[1]/opponent_last_prices[1]
-
-        if (price_0_diff < .5 and my_last_prices[0] < .25) or (price_1_diff < .5 and my_last_prices[1] < .5):
-            self.discount_upper = .4
-            self.discount_lower = .25
-            self.winning_streak = 0
-            self.losing_streak = 0
+        # price_0_diff = my_last_prices[0]/opponent_last_prices[0]
+        # price_1_diff = my_last_prices[1]/opponent_last_prices[1]
+        #
+        # if (price_0_diff < .5 and my_last_prices[0] < .25) or (price_1_diff < .5 and my_last_prices[1] < .5):
+        #     self.discount_upper = .4
+        #     self.discount_lower = .25
+        #     self.winning_streak = 0
+        #     self.losing_streak = 0
 
         # print("My current profit: ", my_current_profit)
         # print("Opponent current profit: ", opponent_current_profit)
