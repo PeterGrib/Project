@@ -105,7 +105,9 @@ class Agent(object):
         for j in item0_prices:
             for k in item1_prices:
                 temporary = copy.deepcopy(self.cust_data)
-                test_array = temporary            
+                test_array = temporary
+                if len(test_array) != 7:
+                    test_array = test_array[2:]
                 test_array.insert(0, j)
                 test_array.insert(1, k)
                 print(test_array)
