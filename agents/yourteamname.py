@@ -43,6 +43,10 @@ class Agent(object):
         self.item1avg = -1.939401864728488
 
         self.losing_streak = 0
+        self.winning_streak = 0
+
+        self.discount_lower = .75
+        self.discount_upper = .9
 
 
     def _process_last_sale(self, last_sale, profit_each_team):
@@ -58,6 +62,17 @@ class Agent(object):
         did_customer_buy_from_opponent = last_sale[1] == self.opponent_number
 
         which_item_customer_bought = last_sale[0]
+
+        if did_customer_buy_from_me:
+            self.winning_streak += 1
+            self.losing_streak = 0
+            self.discount_lower += (self.winning_streak)*.01
+            self.discount_upper += (self.winning_streak)*.01
+        else:
+            self.winning_streak = 0
+            self.losing_streak += 1
+            self.discount_lower -= (self.winning_streak)*.01
+            self.discount_upper -= (self.winning_streak)*.01
 
         # print("My current profit: ", my_current_profit)
         # print("Opponent current profit: ", opponent_current_profit)
@@ -216,9 +231,17 @@ class Agent(object):
             print(no_strat_prices)
             return no_strat_prices
 
-        x = set_prices(cust_data)
+        no_strat_prices = set_prices(cust_data)
 
+        discount_factor = random.uniform(self.discount_lower, self.discount_upper)
 
-        return x
+        no_strat_prices[0] *= discount_factor
+        no_strat_prices[1] *= discount_factor
+
+        output = []
+        output.append(max(0, no_strat_prices[0]))
+        output.append(max(0, no_strat_prices[1]))
+
+        return output
         # TODO Currently this output is just a deterministic 2-d array, but the students are expected to use the buyer covariates to make a better prediction
         # and to use the history of prices from each team in order to create prices for each item.
