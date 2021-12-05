@@ -79,14 +79,13 @@ class Agent(object):
         self._process_last_sale(last_sale, profit_each_team)
 
 
-        cust_data = new_buyer_covariates
-        cust_data = cust_data.tolist()
-        print(cust_data)
-        
+        cust_data = new_buyer_covariates.tolist()
 
-        if new_buyer_embedding.any() == None:
+
+        if type(new_buyer_embedding) != list:
             cust_data.append(self.item0avg)
             cust_data.append(self.item1avg)
+
         else:
             cust_data.append(np.dot(new_buyer_embedding, self.item0_embedding))
             cust_data.append(np.dot(new_buyer_embedding, self.item1_embedding))
