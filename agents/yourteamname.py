@@ -109,7 +109,7 @@ class Agent(object):
             max_2 = 0
             for j in item0_prices:
                 for k in item1_prices:
-                    print(k)
+                    # print(k)
                 # test_array = []
                 # print(test_array)
                 # for element in cust_data:
@@ -117,16 +117,16 @@ class Agent(object):
                     test_array = copy.deepcopy(input)
                     test_array.insert(0, j)
                     test_array.insert(1, k)
-                    print("tarray", test_array)
-                    print("input",input)
+                    # print("tarray", test_array)
+                    # print("input",input)
                     test_array = np.asarray(test_array)
-                    print("tarray_np", test_array)
+                    # print("tarray_np", test_array)
                     proba = self.trained_model.predict_proba(test_array.reshape(1,-1))
 
                     expect_rev = test_array[0]*proba[0][1]+test_array[1]*proba[0][2]
-                    test_array = []
+                    # test_array = []
                     # test_array = test_array.pop(0)
-                    print(test_array)
+                    # print(test_array)
                     if expect_rev>max_rev:
                         max_rev = expect_rev
                         max_1 = j
@@ -139,7 +139,7 @@ class Agent(object):
             for i in range(len(prices)):
                 for j in np.arange(prices[i][0]-.5, prices[i][0]+.5, .25):
                     for k in np.arange(prices[i][1]-.5, prices[i][1]+.5, .25):
-                        test_array = input
+                        test_array = copy.deepcopy(input)
                         test_array.insert(0, j)
                         test_array.insert(1, k)
                         print(test_array)
@@ -155,7 +155,7 @@ class Agent(object):
             for i in range(len(prices)):
                 for j in np.arange(prices[i][0]-.25, prices[i][0]+.25, .1):
                     for k in np.arange(prices[i][1]-.25, prices[i][1]+.25, .1):
-                        test_array = input
+                        test_array = copy.deepcopy(input)
                         test_array.insert(0, j)
                         test_array.insert(1, k)
                         test_array = np.asarray(test_array)
@@ -170,7 +170,7 @@ class Agent(object):
             for i in range(len(prices)):
                 for j in np.arange(prices[i][0]-.1, prices[i][0]+.1, .05):
                     for k in np.arange(prices[i][1]-.1, prices[i][1]+.1, .05):
-                        test_array = input
+                        test_array = copy.deepcopy(input)
                         test_array.insert(0, j)
                         test_array.insert(1, k)
                         test_array = np.asarray(test_array)
@@ -185,7 +185,7 @@ class Agent(object):
             for i in range(len(prices)):
                 for j in np.arange(prices[i][0]-.05, prices[i][0]+.05, .01):
                     for k in np.arange(prices[i][1]-.05, prices[i][1]+.05, .01):
-                        test_array = input
+                        test_array = copy.deepcopy(input)
                         test_array.insert(0, j)
                         test_array.insert(1, k)
                         test_array = np.asarray(test_array)
@@ -200,7 +200,7 @@ class Agent(object):
             for i in range(len(prices)):
                 for j in np.arange(prices[i][0]-.01, prices[i][0]+.01, .005):
                     for k in np.arange(prices[i][1]-.01, prices[i][1]+.01, .005):
-                        test_array = input
+                        test_array = copy.deepcopy(input)
                         test_array.insert(0, j)
                         test_array.insert(1, k)
                         test_array = np.asarray(test_array)
