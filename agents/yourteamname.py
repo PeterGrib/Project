@@ -79,7 +79,7 @@ class Agent(object):
         self._process_last_sale(last_sale, profit_each_team)
 
 
-        cust_data = new_buyer_covariates
+        cust_data = new_buyer_covariates.tolist()
         if new_buyer_embedding == None:
             cust_data.append(self.item0avg)
             cust_data.append(self.item1avg)
