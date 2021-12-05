@@ -96,7 +96,7 @@ class Agent(object):
             self.winning_streak = 0
             self.losing_streak = 0
 
-        if opponent_last_prices[0] < .75 and opponent_last_prices[1] < .75:
+        if opponent_last_prices[0] < 1 and opponent_last_prices[1] < 1:
             self.floorer = True
         else:
             self.floorer = False
