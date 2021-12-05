@@ -88,7 +88,7 @@ class Agent(object):
         price_0_diff = my_last_prices[0]/opponent_last_prices[0]
         price_1_diff = my_last_prices[1]/opponent_last_prices[1]
         #
-        if (price_0_diff < .8) or (price_1_diff < .8):
+        if (price_0_diff < .2) or (price_1_diff < .2):
             self.discount_upper = .9
             self.discount_lower = .75
             self.winning_streak = 0
