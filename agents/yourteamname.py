@@ -82,8 +82,8 @@ class Agent(object):
         else:
             self.winning_streak = 0
             self.losing_streak += 1
-            self.discount_lower -= (self.losing_streak)*.01
-            self.discount_upper -= (self.losing_streak)*.01
+            self.discount_lower -= (self.losing_streak)*.05
+            self.discount_upper -= (self.losing_streak)*.05
 
         # price_0_diff = my_last_prices[0]/opponent_last_prices[0]
         # price_1_diff = my_last_prices[1]/opponent_last_prices[1]
