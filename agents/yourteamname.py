@@ -121,6 +121,8 @@ class Agent(object):
                     proba = self.trained_model.predict_proba(test_array.reshape(1,-1))
 
                     expect_rev = test_array[0]*proba[0][1]+test_array[1]*proba[0][2]
+                    test_array.pop(0)
+                    test_array.pop(0)
                     if expect_rev>max_rev:
                         max_rev = expect_rev
                         max_1 = j
