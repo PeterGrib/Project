@@ -2,6 +2,7 @@ import random
 import pickle
 import os
 import numpy as np
+import copy
 
 
 class Agent(object):
@@ -103,10 +104,8 @@ class Agent(object):
         max_2 = 0
         for j in item0_prices:
             for k in item1_prices:
-                temporary = self.cust_data
-                test_array = temporary
-                if len(test_array) != 7:
-                    del test_array[0:2]
+                temporary = copy.deepcopy(self.cust_data)
+                test_array = temporary            
                 test_array.insert(0, j)
                 test_array.insert(1, k)
                 print(test_array)
