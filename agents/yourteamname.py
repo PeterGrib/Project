@@ -59,6 +59,8 @@ class Agent(object):
         self.discount_lower = .9
         self.discount_upper = 1
 
+        self.floorer = False
+
 
     def _process_last_sale(self, last_sale, profit_each_team):
         # print("last_sale: ", last_sale)
@@ -95,8 +97,9 @@ class Agent(object):
             self.losing_streak = 0
 
         if opponent_last_prices[0] < 1 and opponent_last_prices[1] < 1:
-            self.discount_lower = 0
-            self.dicsount_upper = .01
+            self.floorer = True
+        else:
+            self.floorer = False
 
         # print("My current profit: ", my_current_profit)
         # print("Opponent current profit: ", opponent_current_profit)
@@ -265,6 +268,10 @@ class Agent(object):
         output = []
         output.append(max(0, no_strat_prices[0]))
         output.append(max(0, no_strat_prices[1]))
+        if self.floorer:
+            output = []
+            output.append(.05)
+            output.append(.05)
 
         return output
         # TODO Currently this output is just a deterministic 2-d array, but the students are expected to use the buyer covariates to make a better prediction
